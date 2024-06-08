@@ -1,16 +1,16 @@
 # PhotoPrism JS SDK
 
-an unofficial JavaScript SDK for the PhotoPrism API
+an unofficial JavaScript SDK for the [PhotoPrism](https://www.photoprism.app/) API
 
 
 ## Usage
 
 ```bash
-npm install photoprism-sdk
+npm install photoprism
 ```
 
 ```javascript
-import { PhotoPrism } from 'photoprism-sdk';
+import { PhotoPrism } from 'photoprism';
 
 // init instance
 const photoprism = new Photoprism("http://localhost:2342", "admin", "insecure")
