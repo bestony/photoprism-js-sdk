@@ -1,0 +1,43 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    services:
+      photoprism:
+        image: photoprism/photoprism:latest
+        ports:
+          - "2342:2342"
+        env:
+          PHOTOPRISM_ADMIN_USER: "admin"                 # admin login username
+          PHOTOPRISM_ADMIN_PASSWORD: "insecure"          # initial admin password (8-72 characters)
+          PHOTOPRISM_AUTH_MODE: "password"               # authentication mode (public, password)
+          PHOTOPRISM_SITE_URL: "http://localhost:2342/"  # server URL in the format "http(s)://domain.name(:port)/(path)"
+          PHOTOPRISM_DISABLE_TLS: "false"
+          PHOTOPRISM_DATABASE_DRIVER: "sqlite"   
+    strategy:
+      matrix:
+        node-version: [20.x,22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test

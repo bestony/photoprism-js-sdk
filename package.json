@@ -1,0 +1,47 @@
+{
+  "name": "photoprism",
+  "version": "0.0.0-beta",
+  "scripts": {
+    "build": "tsup",
+    "test": "jest"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "photoprism",
+    "library",
+    "typescript"
+  ],
+  "author": {
+    "name": "Bestony",
+    "email": "bestony@linux.com",
+    "url": "https://www.ixiqin.com"
+  },
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.4",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dayjs": "^1.11.11"
+  },
+  "homepage": "https://github.com/bestony/photoprism-js-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/bestony/photoprism-js-sdk/issues",
+    "email": "xiqingongzi+photoprismjssdk@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bestony/photoprism-js-sdk.git"
+  }
+}
